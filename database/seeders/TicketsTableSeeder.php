@@ -64,5 +64,12 @@ class TicketsTableSeeder extends Seeder
             'status' => 'used',
             'used_at' => now(),
         ]);
+        // 過去の日付の授業(過去の予約が一覧に表示されないか確認)
+        Ticket::create([
+            'student_serial_num' => 1,
+            'reservation_id' => 9,
+            'status' => 'used',
+            'used_at' => now(),
+        ]);
     }
 }

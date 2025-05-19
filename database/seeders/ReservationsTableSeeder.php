@@ -54,5 +54,11 @@ class ReservationsTableSeeder extends Seeder
             'lesson_id' => 6,
             'status' => 'reserved',
         ]);
+        // 過去の日付の授業(過去の予約が一覧に表示されないか確認)
+        Reservation::create([
+            'student_serial_num' => 1,
+            'lesson_id' => 7,
+            'status' => 'reserved',
+        ]);
     }
 }

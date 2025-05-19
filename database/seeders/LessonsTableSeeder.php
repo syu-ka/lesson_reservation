@@ -15,7 +15,7 @@ class LessonsTableSeeder extends Seeder
             // 定期授業（木曜Aコース）
             [
                 'title' => '木曜Aコース',
-                'date' => '2025-06-06',
+                'date' => '2025-06-05',
                 'start_time' => '17:00:00',
                 'required_time' => 60,
                 'capacity' => 3,
@@ -25,7 +25,7 @@ class LessonsTableSeeder extends Seeder
             // 定期授業（土曜Aコース）
             [
                 'title' => '土曜Aコース',
-                'date' => '2025-06-01',
+                'date' => '2025-06-07',
                 'start_time' => '14:00:00',
                 'required_time' => 60,
                 'capacity' => 2,
@@ -34,7 +34,7 @@ class LessonsTableSeeder extends Seeder
             ],
             [
                 'title' => '土曜Aコース',
-                'date' => '2025-06-08',
+                'date' => '2025-06-14',
                 'start_time' => '14:00:00',
                 'required_time' => 60,
                 'capacity' => 2,
@@ -73,7 +73,7 @@ class LessonsTableSeeder extends Seeder
                 'fixed_lesson_id' => 3,
             ],
 
-            // 過去の日付の授業(チケット払い戻し不可の確認のため)
+            // 過去の日付の授業(チケット払い戻し不可※そもそも過去授業が表示されない※を確認のために作成)
             [
                 'title' => '過去授業',
                 'date' => '2025-05-01',
