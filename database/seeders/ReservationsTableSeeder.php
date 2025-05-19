@@ -9,18 +9,50 @@ class ReservationsTableSeeder extends Seeder
 {
     public function run(): void
     {
+        // 木曜Aコース（fixed_lesson_id:1, lesson_id:1）
         Reservation::create([
-            'student_serial_num' => 1, // students.serial_num（bigIncrements）を参照
-            'lesson_id' => 1, // lessons.id を参照
-            'status' => 'reserved', // 予約状態
+            'student_serial_num' => 1,
+            'lesson_id' => 1,
+            'status' => 'reserved',
+        ]);
+        Reservation::create([
+            'student_serial_num' => 2,
+            'lesson_id' => 1,
+            'status' => 'reserved',
+        ]);
+        Reservation::create([
+            'student_serial_num' => 3,
+            'lesson_id' => 1,
+            'status' => 'reserved',
         ]);
 
+        // 土曜Aコース（fixed_lesson_id:2, lesson_id:2,3）
         Reservation::create([
-            'student_serial_num' => 2, // students.serial_num（bigIncrements）を参照
-            'lesson_id' => 3, // lessons.id を参照
-            'status' => 'reserved', // 予約状態
+            'student_serial_num' => 4,
+            'lesson_id' => 2,
+            'status' => 'reserved',
+        ]);
+        Reservation::create([
+            'student_serial_num' => 4,
+            'lesson_id' => 3,
+            'status' => 'reserved',
         ]);
 
-        // 必要に応じて追加の予約を登録可能
+        // 土曜6月maxコース（fixed_lesson_id:3, lesson_id:4,5,6）
+        Reservation::create([
+            'student_serial_num' => 5,
+            'lesson_id' => 4,
+            'status' => 'reserved',
+        ]);
+        Reservation::create([
+            'student_serial_num' => 5,
+            'lesson_id' => 5,
+            'status' => 'reserved',
+        ]);
+        Reservation::create([
+            'student_serial_num' => 5,
+            'lesson_id' => 6,
+            'status' => 'reserved',
+        ]);
     }
 }
