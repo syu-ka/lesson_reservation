@@ -9,22 +9,67 @@ class TicketsTableSeeder extends Seeder
 {
     public function run(): void
     {
-        // 既存予約（student_serial_num = 1, lesson_id = 1）に対応するチケットを作成
-        Ticket::create([
-            'student_serial_num' => 1,     // 対象の生徒
-            'reservation_id' => 1,         // 対応する予約ID（Seeder順で1のはず）
-            'status' => 'used',            // 使用済みとして登録
-            'used_at' => now(),           // 使用日時を現在時刻に設定
-        ]);
+        // ReservationsTableSeederで作成した順にreservation_idが割り当てられる想定
 
-        // 追加：未使用チケットを事前に持っている状態も作ることができます（必要なら）
-        /*
+        // 木曜Aコース（fixed_lesson_id:1, lesson_id:1）
         Ticket::create([
             'student_serial_num' => 1,
-            'reservation_id' => null,
-            'status' => 'available',
-            'used_at' => null,
+            'reservation_id' => 1,
+            'status' => 'used',
+            'used_at' => now(),
         ]);
-        */
+        Ticket::create([
+            'student_serial_num' => 2,
+            'reservation_id' => 2,
+            'status' => 'used',
+            'used_at' => now(),
+        ]);
+        Ticket::create([
+            'student_serial_num' => 3,
+            'reservation_id' => 3,
+            'status' => 'used',
+            'used_at' => now(),
+        ]);
+
+        // 土曜Aコース（fixed_lesson_id:2, lesson_id:2,3）
+        Ticket::create([
+            'student_serial_num' => 4,
+            'reservation_id' => 4,
+            'status' => 'used',
+            'used_at' => now(),
+        ]);
+        Ticket::create([
+            'student_serial_num' => 4,
+            'reservation_id' => 5,
+            'status' => 'used',
+            'used_at' => now(),
+        ]);
+
+        // 土曜6月maxコース（fixed_lesson_id:3, lesson_id:4,5,6）
+        Ticket::create([
+            'student_serial_num' => 5,
+            'reservation_id' => 6,
+            'status' => 'used',
+            'used_at' => now(),
+        ]);
+        Ticket::create([
+            'student_serial_num' => 5,
+            'reservation_id' => 7,
+            'status' => 'used',
+            'used_at' => now(),
+        ]);
+        Ticket::create([
+            'student_serial_num' => 5,
+            'reservation_id' => 8,
+            'status' => 'used',
+            'used_at' => now(),
+        ]);
+        // 過去の日付の授業(過去の予約が一覧に表示されないか確認)
+        Ticket::create([
+            'student_serial_num' => 1,
+            'reservation_id' => 9,
+            'status' => 'used',
+            'used_at' => now(),
+        ]);
     }
 }

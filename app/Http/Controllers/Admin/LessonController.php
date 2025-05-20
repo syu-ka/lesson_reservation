@@ -18,7 +18,7 @@ class LessonController extends Controller
 {
     public function index()
     {
-        $lessons = \App\Models\Lesson::withCount('reservations')->orderBy('date', 'asc')->get();
+        $lessons = \App\Models\Lesson::where('date', '>=', now()->toDateString())->orderBy('date', 'asc')->get();
 
         return view('admin.lessons.index', compact('lessons'));
     }

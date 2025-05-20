@@ -28,6 +28,9 @@ class ReservationController extends Controller
             ->where('status', 'available')
             ->count();
 
+        // 生徒の予約一覧
+        // $reservations = $student->reservations()->with('lesson')->get();
+
         // 生徒の予約一覧(過去は弾く)
         $reservations = Reservation::where('student_serial_num', $student->serial_num)
             ->whereHas('lesson', function ($query) {
