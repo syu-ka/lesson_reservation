@@ -28,9 +28,6 @@ class ReservationController extends Controller
             ->where('status', 'available')
             ->count();
 
-        // 生徒の予約一覧
-        // $reservations = $student->reservations()->with('lesson')->get();
-
         // 生徒の予約一覧(過去は弾く)
         $reservations = Reservation::where('student_serial_num', $student->serial_num)
             ->whereHas('lesson', function ($query) {
@@ -54,16 +51,17 @@ class ReservationController extends Controller
             ->where('status', 'available')
             ->count();
 
-            // 予約済みの授業ID一覧を取得
-            $reservedLessonIds = Reservation::where('student_serial_num', $student->serial_num)
-                ->pluck('lesson_id')
-                ->toArray();
+        // 予約済みの授業ID一覧を取得
+        $reservedLessonIds = Reservation::where('student_serial_num', $student->serial_num)
+            ->pluck('lesson_id')
+            ->toArray();
 
-            // 授業一覧を取得（今後除外や識別用に利用）
-            $lessons = Lesson::withCount('reservations')->get();
+        // 授業一覧を取得（過去の授業は除外）
+        $lessons = Lesson::withCount('reservations')
+            ->where('date', '>=', now()->toDateString())
+            ->get();
 
-            return view('student.reservations.create', compact('lessons', 'remainingTickets', 'reservedLessonIds'));
-
+        return view('student.reservations.create', compact('lessons', 'remainingTickets', 'reservedLessonIds'));
     }
 
     public function store(Request $request)
